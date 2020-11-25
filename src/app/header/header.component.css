@@ -1,0 +1,27 @@
+.navbar {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.nav-item {
+  flex: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.company-text {
+  margin-left: 0.5em;
+}
