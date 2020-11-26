@@ -4,24 +4,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { RandomPictureComponent } from './random-picture/random-picture.component';
+import { LayoutModule } from './shared/layout/layout.module';
+import { DogBreedsModule } from './dog-breeds/dog-breeds.module';
+import { MaterialModule } from './shared/material.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    RandomPictureComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    LayoutModule,
+    DogBreedsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
