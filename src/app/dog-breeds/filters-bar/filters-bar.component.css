@@ -1,0 +1,11 @@
+.search-container{
+    padding: 0 2em;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+}
+
+.search-field, .filtersBar{
+    margin: 0 2em;
+}

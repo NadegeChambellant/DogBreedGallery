@@ -10,12 +10,7 @@ const routes: Routes = [
   {
      path: 'dog-breeds',
      loadChildren: () => import('./dog-breeds/dog-breeds.module').then(m => m.DogBreedsModule)
-  },
-  // {
-  //   path: 'dog-breeds',
-  //   loadChildren: './dog-breeds/dog-breeds.module#DogBreedsModule'
-  // },
-
+  }
 ];
 
 @NgModule({

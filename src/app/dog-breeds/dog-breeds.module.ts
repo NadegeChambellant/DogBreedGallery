@@ -5,16 +5,21 @@ import { MaterialModule } from '../shared/material.module';
 import { DogBreedsComponent } from './dog-breeds.component';
 import { DogBreedsRoutingModule } from './dog-breeds-routing.module';
 import { RouterModule } from '@angular/router';
+import { FiltersBarComponent } from './filters-bar/filters-bar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     RandomPictureComponent,
-    DogBreedsComponent
+    DogBreedsComponent,
+    FiltersBarComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
     DogBreedsRoutingModule
   ],
   exports: [
