@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { DogBreedsModule } from './dog-breeds/dog-breeds.module';
 import { MaterialModule } from './shared/material.module';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

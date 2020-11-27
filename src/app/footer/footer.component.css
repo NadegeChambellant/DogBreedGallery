@@ -1,0 +1,26 @@
+
+#brand-bar {
+    background-color: #81c784;
+}
+
+#links-bar {
+    background-color: black;
+
+}
+
+.link{
+    color: white;
+    margin: 0.2em 1em;
+}
+
+.flex-container{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items:center;
+}
+
+.company-logo{
+    margin:0.5em;
+}
