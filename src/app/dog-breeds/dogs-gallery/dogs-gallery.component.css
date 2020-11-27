@@ -1,0 +1,34 @@
+
+.picture-gallery{
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 25px;
+}
+
+.picture-frame{
+    display: flex;
+    flex: 0 0 32%;
+    height: 300px;
+    width: 260px;
+    background-color: #fff;
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 5px;
+    padding: 17px;
+    box-shadow: 7px 8px 11px -6px #adabab;
+    -moz-box-shadow: 7px 8px 11px -6px #adabab;
+    -webkit-box-shadow: 7px 8px 11px -6px #adabab;
+}
+
+mat-card img{
+    object-fit: cover; 
+    width: 100%; 
+    height: 100%;
+}
+
+.mat-card-image:first-child {
+    margin: 0 0;
+}
