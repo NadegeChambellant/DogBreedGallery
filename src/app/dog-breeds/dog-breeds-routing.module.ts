@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { DogBreedsComponent } from './dog-breeds.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: DogBreedsComponent
-    }
+  {
+    path: '',
+    component: DogBreedsComponent
+  }
 ];
 
 @NgModule({

@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
-import { BreedList, SubBreedsList } from './breedList.model';
-import { DogSearchService } from './dog-search.service';
+import { BreedList, SubBreedsList } from '../breedList.model';
+import { DogSearchService } from '../dog-search.service';
 
 @Component({
   selector: 'app-filters-bar',
@@ -11,59 +11,47 @@ import { DogSearchService } from './dog-search.service';
   styleUrls: ['./filters-bar.component.css'],
 })
 export class FiltersBarComponent implements OnInit, OnDestroy {
-  dogBreedSub!: Subscription;
-  subBreedSub!: Subscription;
-  dogBreedsList?: string[];
-  filteredOptions?: Observable<string[]>;
-  subBreedsList?: string[];
-  breed = new FormControl();
+  @Input() breedsList?: string[];
+  @Input() subBreedsList?: string[];
+  @Output() selectedBreed: EventEmitter<string> = new EventEmitter<string>();
+  @Output() selectedSubBreed: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private dogSearchService: DogSearchService, fb: FormBuilder) {}
+  subBreedSubscription!: Subscription;
+  breedSubscription!: Subscription;
+  filteredOptions?: Observable<string[]>;
+  breed = new FormControl();
+  subBreed = new FormControl();
+
+  constructor() {}
 
   ngOnInit(): void {
-    this.dogBreedSub = this.dogSearchService
-      .getAllBreeds()
-      .pipe(
-        tap(
-          (data: BreedList) => (this.dogBreedsList = Object.keys(data.message))
-        )
-      )
-      .subscribe();
-
     this.filteredOptions = this.breed.valueChanges.pipe(
       startWith(''),
-      map((breed) => this._filter(breed))
+      map(value => this._filter(value))
     );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    if (this.dogBreedsList) {
-      return this.dogBreedsList.filter(
-        (option) => option.toLowerCase().indexOf(filterValue) === 0
-      );
-    }
-    return [];
-  }
-
-  reloadSubBreeds(): void {
-    this.subBreedSub = this.dogSearchService
-      .getSubBreedsFromBreed(this.breed.value)
-      .pipe(
-        tap(
-          (data: SubBreedsList) =>
-            (this.subBreedsList = Object.values(data.message))
-        )
-      )
-      .subscribe();
   }
 
   areSubBreedsAvailable(): boolean {
     return Boolean(this.subBreedsList?.length);
   }
 
+  onSelectedBreed(breed: string): void {
+    this.selectedBreed.emit(breed);
+  }
+
+  onSelectedSubBreed(subBreed: string): void {
+    this.selectedSubBreed.emit(subBreed);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    if (this.breedsList){
+      return this.breedsList.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    }
+    return [];
+  }
+
   ngOnDestroy(): void {
-    this.dogBreedSub.unsubscribe();
-    this.subBreedSub.unsubscribe();
+
   }
 }

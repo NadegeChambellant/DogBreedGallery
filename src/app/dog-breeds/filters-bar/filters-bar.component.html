@@ -5,7 +5,7 @@
   </div>
   <div class="search-container">
     <div class="col-xs-12">
-        <div *ngIf="dogBreedsList">
+        <div *ngIf="breedsList">
             <mat-form-field class="search-field">
               <input type="text"
                       placeholder="Main breed"
@@ -14,7 +14,7 @@
                       [formControl]="breed"
                       [matAutocomplete]="auto">
               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="reloadSubBreeds()">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="onSelectedBreed(option)">
                   {{option}}
                 </mat-option>
               </mat-autocomplete>
@@ -25,7 +25,7 @@
         <mat-form-field class="search-field">
           <mat-label>Sub Breed</mat-label>
           <mat-select [disabled]="!areSubBreedsAvailable()">
-            <mat-option *ngFor="let option of subBreedsList" [value]="option">
+            <mat-option *ngFor="let option of subBreedsList" [value]="option" (click)="onSelectedSubBreed(option)">
               {{option}}
             </mat-option>
           </mat-select>

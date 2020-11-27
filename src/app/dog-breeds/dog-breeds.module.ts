@@ -7,12 +7,14 @@ import { DogBreedsRoutingModule } from './dog-breeds-routing.module';
 import { RouterModule } from '@angular/router';
 import { FiltersBarComponent } from './filters-bar/filters-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DogsGalleryComponent } from './dogs-gallery/dogs-gallery.component';
 
 @NgModule({
   declarations: [
     RandomPictureComponent,
     DogBreedsComponent,
-    FiltersBarComponent
+    FiltersBarComponent,
+    DogsGalleryComponent,
   ],
   imports: [
     CommonModule,

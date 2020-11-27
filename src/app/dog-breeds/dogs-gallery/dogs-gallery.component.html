@@ -1,0 +1,12 @@
+<p>dogs-gallery works!</p>
+<div class="picture-gallery">
+  <div *ngFor="let picture of pictureList">
+    <mat-card class="picture-frame">
+      <img
+        mat-card-image
+        [src]="picture"
+        alt="Photo of a Dog"
+      />
+    </mat-card>
+  </div>
+</div>

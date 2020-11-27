@@ -1,2 +1,8 @@
 <app-random-picture></app-random-picture>
-<app-filters-bar></app-filters-bar>
+<app-filters-bar [breedsList]="this.dogBreedsList" 
+                [subBreedsList]="this.subBreedsList"
+                (selectedBreed)="onChangeBreedSelection($event)"
+                (selectedSubBreed)="onChangeSubBreedSelection($event)">
+</app-filters-bar>
+<!-- inject filteredList into gallery-->
+<app-dogs-gallery [pictureList]="this.selectedPicturesList"></app-dogs-gallery>
